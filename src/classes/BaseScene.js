@@ -11,7 +11,8 @@ export default class BaseScene{
         }
     }
     setup (el) {
-        this.environment = new Environment3d(el, {width: this.getWidth(), height: this.getHeight(), gravity: -5, pov: this.getPOVMode()});
+        // this.environment = new Environment3d(el, {width: this.getWidth(), height: this.getHeight(), gravity: -5, pov: this.getPOVMode()});
+        this.environment = new Environment3d(el, {width: this.getWidth(), height: this.getHeight(), pov: this.getPOVMode()});
         console.log(this.environment);
         this.initialize();
         this.renderLoop(this);
