@@ -1,5 +1,6 @@
 import { useState } from 'react'; 
 import { degreesToRadians, radiansToDegrees } from '../../utils/Utilities';
+import './BoneForm.css';
 const BoneForm = ({ bone, scaling }) => {
     const _scale = { ...bone.scale };
     const [rx, setRx] = useState(radiansToDegrees(bone.rotation.x).toString());
@@ -8,7 +9,7 @@ const BoneForm = ({ bone, scaling }) => {
     const [sx, setSx] = useState(bone.scale.x.toString());
     const [sy, setSy] = useState(bone.scale.y.toString());
     const [sz, setSz] = useState(bone.scale.z.toString());
-    const [scale, setScale] = useState(_scale);
+    const [open, setOpen] = useState(false);
     const rxChange = (e) => {
         const value = e.target.value;
         if(!isNaN(value)){
@@ -52,10 +53,13 @@ const BoneForm = ({ bone, scaling }) => {
             setSz(e.target.value);
         }
     }
+    const onToggled = () => {
+        setOpen(open ? false : true);
+    }
     return (
         <div className="bone-form">
-            <h3>{bone.name}</h3>
-            <div>
+            <h3><a onClick={onToggled}>{bone.name}</a></h3>
+            <div className={open ? 'expanded' : ''}>
                 <h4>Rotation</h4>
                 <ul>
                     <li><label><span>X</span><input type="number" value={rx} onChange={rxChange} /></label></li>

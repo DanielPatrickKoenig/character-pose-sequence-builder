@@ -1,0 +1,6 @@
+.bone-form > h3 + div{
+    display:none;
+}
+.bone-form > h3 + div.expanded{
+    display: block;
+}
